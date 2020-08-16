@@ -50,7 +50,6 @@ class AndroidScannerView(binaryMessenger: BinaryMessenger, context: Context, vie
 
         this.channelResult = result;
         when (call.method) {
-            "setFormats" -> setFormats()
             "startCamera" -> startCamera()
             "stopCamera" -> stopCamera()
             "resumeCameraPreview" -> resumeCameraPreview()
@@ -91,6 +90,7 @@ class AndroidScannerView(binaryMessenger: BinaryMessenger, context: Context, vie
 
 
         zxing.setAutoFocus(true);
+        zxing.setFormats([BarcodeFormat.CODE_39]);
         zxing.setAspectTolerance(0.5f);
         return zxing;
     }
@@ -102,11 +102,6 @@ class AndroidScannerView(binaryMessenger: BinaryMessenger, context: Context, vie
     }
 
     override fun onFlutterViewAttached(flutterView: View) {
-    }
-
-   private fun setFormats() {
-        zxing.setFormats([BarcodeFormat.CODE_39]);
-        
     }
 
     private fun startCamera() {
