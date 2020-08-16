@@ -88,9 +88,9 @@ class AndroidScannerView(binaryMessenger: BinaryMessenger, context: Context, vie
 
     override fun getView(): View {
 
-
+        val list = mutableListOf(BarcodeFormat.CODE_39)
         zxing.setAutoFocus(true);
-        zxing.setFormats([BarcodeFormat.CODE_39]);
+        zxing.setFormats(list);
         zxing.setAspectTolerance(0.5f);
         return zxing;
     }
