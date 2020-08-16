@@ -38,7 +38,6 @@ class AndroidScannerView(binaryMessenger: BinaryMessenger, context: Context, vie
         this.channelResult.success("${rawResult?.toString()}");
         }
         else {
-            
             resumeCameraPreview()
         }
 //        this.eventChannelSink?.success("${rawResult?.toString()}")
