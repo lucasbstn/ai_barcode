@@ -37,6 +37,10 @@ class AndroidScannerView(binaryMessenger: BinaryMessenger, context: Context, vie
         if (rawResult?.getBarcodeFormat() == BarcodeFormat.CODE_39) {
         this.channelResult.success("${rawResult?.toString()}");
         }
+        else {
+            startCamera()
+            resumeCameraPreview()
+        }
 //        this.eventChannelSink?.success("${rawResult?.toString()}")
     }
 
