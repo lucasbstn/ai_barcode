@@ -34,12 +34,12 @@ class AndroidScannerView(binaryMessenger: BinaryMessenger, context: Context, vie
      * 识别二维码结果
      */
     override fun handleResult(rawResult: Result?) {
-        if (rawResult?.getBarcodeFormat() == BarcodeFormat.CODE_39) {
+        //if (rawResult?.getBarcodeFormat() == BarcodeFormat.CODE_39) {
         this.channelResult.success("${rawResult?.toString()}");
-        }
-        else {
-            resumeCameraPreview()
-        }
+        //}
+        //else {
+         //   resumeCameraPreview()
+        //}
 //        this.eventChannelSink?.success("${rawResult?.toString()}")
     }
 
@@ -50,6 +50,7 @@ class AndroidScannerView(binaryMessenger: BinaryMessenger, context: Context, vie
 
         this.channelResult = result;
         when (call.method) {
+            "setFormats" -> setFormats()
             "startCamera" -> startCamera()
             "stopCamera" -> stopCamera()
             "resumeCameraPreview" -> resumeCameraPreview()
@@ -101,6 +102,11 @@ class AndroidScannerView(binaryMessenger: BinaryMessenger, context: Context, vie
     }
 
     override fun onFlutterViewAttached(flutterView: View) {
+    }
+
+   private fun setFormats() {
+        zxing.setFormats([BarcodeFormat.CODE_39]);
+        
     }
 
     private fun startCamera() {
