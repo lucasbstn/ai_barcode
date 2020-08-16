@@ -33,8 +33,9 @@ class AndroidScannerView(binaryMessenger: BinaryMessenger, context: Context, vie
      * 识别二维码结果
      */
     override fun handleResult(rawResult: Result?) {
-
+        if (rawResult.getBarcodeFormat() == BarcodeFormat.CODE_39) {
         this.channelResult.success("${rawResult?.toString()}");
+        }
 //        this.eventChannelSink?.success("${rawResult?.toString()}")
     }
 
